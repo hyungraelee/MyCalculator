@@ -67,5 +67,55 @@ class MainActivity : AppCompatActivity() {
             a = allResult.text.toString()
         }
 
+        findViewById<Button>(R.id.plus).setOnClickListener {
+            allResult.text = allResult.text.append("+")
+            a = allResult.text.toString()
+        }
+
+        findViewById<Button>(R.id.minus).setOnClickListener {
+            allResult.text = allResult.text.append("-")
+            a = allResult.text.toString()
+        }
+
+        findViewById<Button>(R.id.multiple).setOnClickListener {
+            allResult.text = allResult.text.append("X")
+            a = allResult.text.toString()
+        }
+
+        findViewById<Button>(R.id.slush).setOnClickListener {
+            allResult.text = allResult.text.append("/")
+            a = allResult.text.toString()
+        }
+
+        findViewById<Button>(R.id.result).setOnClickListener {
+            b = 0
+            c = 1
+            d = 1.0
+            if (list.size != 0) {
+                list = mutableListOf<String>()
+            }
+
+            if (allResult.text.contains("+")) {
+                val str = allResult.text.split("+")
+                val a = str[0].toDouble()
+                val z = a.toInt()
+                for (i in 0 until (str.size)) {
+                    if (i == 0) {
+                        list.add(z.toString())
+                        b += list[i].toInt()
+                    } else {
+                        list.add(str[i])
+                        b += list[i].toInt()
+                    }
+                }
+                allResult.setText(String.format("%d", b))
+            }
+        }
+
+
+
+        findViewById<Button>(R.id.clear).setOnClickListener {
+            allResult.setText("")
+        }
     }
 }
