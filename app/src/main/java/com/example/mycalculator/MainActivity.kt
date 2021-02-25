@@ -110,9 +110,50 @@ class MainActivity : AppCompatActivity() {
                 }
                 allResult.setText(String.format("%d", b))
             }
+
+            if (allResult.text.contains("-")) {
+                val str = allResult.text.split("-")
+                val a = str[0].toDouble()
+                val z = a.toLong()
+                b = z
+                for (i in 0 until (str.size)) {
+                    list.add(str[i])
+                    if (i != 0) {
+                        b -= list[i].toInt()
+                    }
+                }
+                allResult.setText(String.format("%d", b))
+            }
+
+            if (allResult.text.contains("X")) {
+                val str = allResult.text.split("X")
+                val a = str[0].toDouble()
+                val z = a.toInt()
+
+                for (i in 0 until (str.size)) {
+                    if (i == 0) {
+                        list.add(z.toString())
+                        c *= list[i].toInt()
+                    } else {
+                        list.add(str[i])
+                        c *= list[i].toInt()
+                    }
+                }
+                allResult.setText(String.format("%d", c))
+            }
+
+            if (allResult.text.contains("/")) {
+                val str = allResult.text.split("/")
+                d = str[0].toDouble()
+                for (i in 0 until (str.size)) {
+                    list.add(str[i])
+                    if (i != 0) {
+                        d /= list[i].toDouble()
+                    }
+                }
+                allResult.setText(String.format("%.2f", d))
+            }
         }
-
-
 
         findViewById<Button>(R.id.clear).setOnClickListener {
             allResult.setText("")

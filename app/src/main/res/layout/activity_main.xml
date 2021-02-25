@@ -25,7 +25,7 @@
         android:padding="30dp"
         android:gravity="end"
         android:textStyle="bold"
-        android:text="0"
+        android:text=""
         android:textColor="#FFFFFF"
         />
     <LinearLayout
